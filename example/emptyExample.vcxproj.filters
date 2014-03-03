@@ -52,9 +52,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="icon.rc" />
-  </ItemGroup>
-  <ItemGroup>
     <Library Include="..\libs\TcAdsDll.lib">
       <Filter>addons\ofxBeckhoffADS\libs</Filter>
     </Library>

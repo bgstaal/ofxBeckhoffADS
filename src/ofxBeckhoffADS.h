@@ -61,9 +61,9 @@ class ofxBeckhoffADS
 		}
 
 		template<typename T>
-		T readValue(string name)
+		T readValue(string name, T defaultValue)
 		{
-			T value;
+			T value = defaultValue;
 			unsigned long handle;
 
 			if (_getHandle(name, &handle))
