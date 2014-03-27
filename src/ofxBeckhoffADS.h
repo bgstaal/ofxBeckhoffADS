@@ -3,7 +3,6 @@
 #include "TcAdsDef.h"
 #include "TcAdsAPI.h"
 
-
 // TODO: Enable caching of handles
 
 class ofxBeckhoffADS
@@ -105,6 +104,17 @@ class ofxBeckhoffADS
 			}
 		}
 
+		template<typename T>
+		void writeArray(string name, vector<T> values)
+		{
+			unsigned long handle;
+
+			if (_getHandle(name, &handle))
+			{
+				_isError(AdsSyncWriteReqEx(_port, &_addr, ADSIGRP_SYM_VALBYHND, handle, values.size() * sizeof(T), &values[0]));
+			}
+		}
+
 	private:
 
 		AmsAddr _addr;
@@ -121,7 +131,6 @@ class ofxBeckhoffADS
 
 			return true;
 		}
-
 
 		bool _isError(long errorCode)
 		{
