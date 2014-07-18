@@ -11,6 +11,7 @@ class ofxBeckhoffADS
 
 		ofxBeckhoffADS ()
 		{
+			_isOpen = false;
 			long v = AdsGetDllVersion();
 			AdsVersion *pDLLVersion = (AdsVersion *)v;
 			ofLog() << "ADS Version: " << (int)pDLLVersion->version << endl;
@@ -36,6 +37,8 @@ class ofxBeckhoffADS
 				_isOpen = true;
 				ofLog() << "connection succesfully opened at port " << _addr.port << endl;
 			}
+
+			ofLog() << "is open: " << _isOpen << endl;
 		}
 
 		void openRemote(string address, unsigned short port)
@@ -113,6 +116,11 @@ class ofxBeckhoffADS
 			{
 				_isError(AdsSyncWriteReqEx(_port, &_addr, ADSIGRP_SYM_VALBYHND, handle, values.size() * sizeof(T), &values[0]));
 			}
+		}
+
+		bool isOpen ()
+		{
+			return _isOpen;
 		}
 
 	private:
