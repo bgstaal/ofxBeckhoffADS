@@ -19,8 +19,8 @@ void ofApp::update()
 void ofApp::draw()
 {
 	stringstream ss;
-	ss << "counter: " << _ads.readValue<float>("MAIN.counter") << endl;
-	ss << "test: " << _ads.readValue<float>("MAIN.test") << endl;
+	ss << "counter: " << _ads.readValue<float>("MAIN.counter", 0) << endl;
+	ss << "test: " << _ads.readValue<float>("MAIN.test", 0) << endl;
 
 	_font.drawString(ss.str(), 100, 100);
 }

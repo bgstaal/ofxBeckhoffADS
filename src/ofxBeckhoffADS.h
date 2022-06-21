@@ -12,11 +12,13 @@ class ofxBeckhoffADS
 		ofxBeckhoffADS ()
 		{
 			_isOpen = false;
+			/*
 			long v = AdsGetDllVersion();
 			AdsVersion *pDLLVersion = (AdsVersion *)v;
 			ofLog() << "ADS Version: " << (int)pDLLVersion->version << endl;
 			ofLog() << "ADS Revision: " << (int)pDLLVersion->revision << endl;
 			ofLog() << "ADS Build: " << pDLLVersion->build << endl;
+			*/
 		}
 
 		~ofxBeckhoffADS ()
@@ -146,7 +148,7 @@ class ofxBeckhoffADS
 			{
 				string msg = _getErrorMsg(errorCode);
 
-				ofLog(OF_LOG_ERROR) << "ADS error (" << errorCode << "): " << msg << endl;
+				//ofLog(OF_LOG_ERROR) << "ADS error (" << errorCode << "): " << msg << endl;
 				return true;
 			}
 			else
